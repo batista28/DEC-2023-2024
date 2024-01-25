@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mover Caja</title>
+    <style>
+      .caja {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: relative; /* Cambiado de absolute a relative */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="caja"></div>
+
+    <script>
+      document.addEventListener("keydown", function (event) {
+        const caja = document.querySelector(".caja");
+        const desplazamiento = 10;
+
+        switch (event.key) {
+          case "ArrowLeft": // Flecha a la izquierda
+            caja.style.left = parseInt(caja.style.left) - desplazamiento + "px";
+            break;
+          case "ArrowUp": // Flecha arriba
+            caja.style.top = parseInt(caja.style.top) - desplazamiento + "px";
+            break;
+          case "ArrowRight": // Flecha a la derecha
+            caja.style.left = parseInt(caja.style.left) + desplazamiento + "px";
+            break;
+          case "ArrowDown": // Flecha abajo
+            caja.style.top = parseInt(caja.style.top) + desplazamiento + "px";
+            break;
+        }
+      });
+    </script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mover Caja</title>
+    <style>
+      .caja {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: relative; /* Cambiado de absolute a relative */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="caja"></div>
+
+    <script>
+      document.addEventListener("keydown", function (event) {
+        const caja = document.querySelector(".caja");
+        const desplazamiento = 100;
+
+        switch (event.key) {
+          case "ArrowLeft": // Flecha a la izquierda
+            caja.style.left = parseInt(caja.style.left) - desplazamiento + "px";
+            break;
+          case "ArrowUp": // Flecha arriba
+            caja.style.top = parseInt(caja.style.top) - desplazamiento + "px";
+            break;
+          case "ArrowRight": // Flecha a la derecha
+            caja.style.left = parseInt(caja.style.left) + desplazamiento + "px";
+            break;
+          case "ArrowDown": // Flecha abajo
+            caja.style.top = parseInt(caja.style.top) + desplazamiento + "px";
+            break;
+        }
+      });
+    </script>
+  </body>
+</html>

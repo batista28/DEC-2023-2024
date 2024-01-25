@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eliminar Vocales</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      p {
+        margin-bottom: 20px;
+      }
+      button {
+        margin-right: 5px;
+        padding: 5px 10px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="texto">
+      Me llamo Maximo Décimo Meridio, Comandante de los ejércitos del Norte, General de las legiones
+      felix, Leal servidor del verdadero emperador Marco Aurelio, Padre de un hijo asesinado, Marido
+      de una mujer asesinada y alcanzaré mi venganza en esta vida o en la otra.
+    </p>
+
+    <button onclick="eliminarVocal('a')">Eliminar A</button>
+    <button onclick="eliminarVocal('e')">Eliminar E</button>
+    <button onclick="eliminarVocal('i')">Eliminar I</button>
+    <button onclick="eliminarVocal('o')">Eliminar O</button>
+    <button onclick="eliminarVocal('u')">Eliminar U</button>
+
+    <script>
+      function eliminarVocal(vocal) {
+        const texto = document.getElementById("texto");
+        const contenido = texto.textContent;
+        const nuevoContenido = contenido.replace(new RegExp(vocal, "gi"), "");
+        texto.textContent = nuevoContenido;
+      }
+    </script>
+  </body>
+</html>

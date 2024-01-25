@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>taton sobre caja</title>
+    <style>
+      #blueBox {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="blueBox"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const cajaAzul = document.getElementById("blueBox");
+
+        // Función para obtener una posición aleatoria dentro de la ventana del navegador
+        function getRandomPosition() {
+          const windowWidth = window.innerWidth;
+          const windowHeight = window.innerHeight;
+          const randomX = Math.floor(Math.random() * (windowWidth - 100)); // Resta 100 para evitar que la caja se salga del lado derecho
+          const randomY = Math.floor(Math.random() * (windowHeight - 100)); // Resta 100 para evitar que la caja se salga del fondo
+          return { x: randomX, y: randomY };
+        }
+
+        // Función para mover la caja azul a una posición aleatoria cuando el mouse se coloca sobre ella
+        function moveBoxRandomly() {
+          const newPosition = getRandomPosition();
+          cajaAzul.style.left = newPosition.x + "px";
+          cajaAzul.style.top = newPosition.y + "px";
+        }
+
+        // Detecta cuando el mouse se coloca sobre la caja azul y llama a la función para moverla aleatoriamente
+        blueBox.addEventListener("mouseover", moveBoxRandomly);
+      });
+    </script>
+  </body>
+</html>
