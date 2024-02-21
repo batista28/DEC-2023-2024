@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detección de acciones del usuario</title>
+</head>
+<body>
+
+<a href="#" id="link">Haz clic aquí</a>
+
+<script>
+function esperarAccionUsuario() {
+  return new Promise((resolve, reject) => {
+    const enlace = document.getElementById('link');
+
+    const clicHandler = () => {
+      // Eliminar el manejador de clics después de la primera acción
+      enlace.removeEventListener('click', clicHandler);
+      // Esperar la segunda acción (pulsar la tecla "G")
+      window.addEventListener('keydown', keydownHandler);
+    };
+
+    const keydownHandler = (event) => {
+      if (event.key === 'g' || event.key === 'G') {
+        // Acciones detectadas, resolver la promesa
+        resolve();
+      }
+    };
+
+    // Esperar la primera acción (clic sobre el enlace)
+    enlace.addEventListener('click', clicHandler);
+  });
+}
+
+esperarAccionUsuario()
+  .then(() => {
+    console.log('Patrón detectado');
+    alert('¡Patrón detectado!');
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+</script>
+
+</body>
+</html>

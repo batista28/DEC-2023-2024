@@ -1,0 +1,540 @@
+
+Claro, aquí te explico algunas de las funciones más utilizadas en JavaScript:
+
+1. console.log()
+Uso: Muestra mensajes en la consola del navegador o entorno de ejecución.
+Ejemplo:
+javascript
+Copy code
+console.log("Hola, mundo!");
+
+2. alert()
+Uso: Muestra un cuadro de diálogo con un mensaje.
+Ejemplo:
+javascript
+Copy code
+alert("¡Hola!");
+
+3. prompt()
+Uso: Solicita al usuario que ingrese datos mediante un cuadro de diálogo.
+Ejemplo:
+javascript
+Copy code
+let nombre = prompt("Ingrese su nombre:");
+console.log("Hola, " + nombre + "!");
+
+4. confirm()
+Uso: Muestra un cuadro de diálogo con un mensaje y botones de confirmación y cancelación.
+Ejemplo:
+javascript
+Copy code
+let confirmacion = confirm("¿Estás seguro?");
+if (confirmacion) {
+    console.log("Confirmado");
+} else {
+    console.log("Cancelado");
+}
+
+5. setTimeout()
+Uso: Ejecuta una función después de un cierto tiempo.
+Ejemplo:
+javascript
+Copy code
+setTimeout(() => {
+    console.log("¡Han pasado 3 segundos!");
+}, 3000);
+
+6. setInterval()
+Uso: Ejecuta una función repetidamente cada cierto intervalo de tiempo.
+Ejemplo:
+javascript
+Copy code
+setInterval(() => {
+    console.log("¡Se ejecuta cada segundo!");
+}, 1000);
+
+7. Array.prototype.map()
+Uso: Crea un nuevo array con los resultados de llamar a una función proporcionada para cada elemento del array.
+Ejemplo:
+javascript
+Copy code
+const numeros = [1, 2, 3];
+const duplicados = numeros.map(numero => numero * 2);
+console.log(duplicados); // [2, 4, 6]
+
+8. Array.prototype.filter()
+Uso: Crea un nuevo array con todos los elementos que pasan la prueba implementada por la función proporcionada.
+Ejemplo:
+javascript
+Copy code
+const numeros = [1, 2, 3, 4, 5];
+const mayoresDeTres = numeros.filter(numero => numero > 3);
+console.log(mayoresDeTres); // [4, 5]
+
+9. Array.prototype.reduce()
+Uso: Aplica una función acumuladora contra un array y reduce este array a un solo valor.
+Ejemplo:
+javascript
+Copy code
+const numeros = [1, 2, 3, 4, 5];
+const suma = numeros.reduce((acumulador, numero) => acumulador + numero, 0);
+console.log(suma); // 15
+
+10. fetch()
+Uso: Permite hacer peticiones HTTP y manejar las respuestas.
+Ejemplo:
+javascript
+Copy code
+fetch('https://api.example.com/data')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+
+11. Array.prototype.forEach()
+Uso: Ejecuta una función dada una vez por cada elemento del array.
+Ejemplo:
+javascript
+Copy code
+const frutas = ['Manzana', 'Banana', 'Cereza'];
+frutas.forEach(fruta => console.log(fruta));
+
+12. Array.prototype.includes()
+Uso: Determina si un array incluye un determinado elemento.
+Ejemplo:
+javascript
+Copy code
+const numeros = [1, 2, 3, 4, 5];
+console.log(numeros.includes(3)); // true
+
+13. String.prototype.split()
+Uso: Divide un objeto String en un array de strings mediante la separación de la cadena en subcadenas.
+Ejemplo:
+javascript
+Copy code
+const frase = 'Hola, mundo';
+const palabras = frase.split(' ');
+console.log(palabras); // ['Hola,', 'mundo']
+
+14. String.prototype.indexOf()
+Uso: Devuelve el índice de la primera aparición de un valor especificado en una cadena.
+Ejemplo:
+javascript
+Copy code
+const frase = 'Hola, mundo';
+console.log(frase.indexOf('mundo')); // 6
+
+15. Object.keys()
+Uso: Devuelve un array de las propiedades enumerables de un objeto.
+Ejemplo:
+javascript
+Copy code
+const persona = { nombre: 'Juan', edad: 25, ocupacion: 'Desarrollador' };
+const propiedades = Object.keys(persona);
+console.log(propiedades); // ['nombre', 'edad', 'ocupacion']
+
+16. Math.random()
+Uso: Devuelve un número decimal pseudoaleatorio entre 0 y 1.
+Ejemplo:
+javascript
+Copy code
+const numeroAleatorio = Math.random();
+console.log(numeroAleatorio);
+
+17. Math.floor()
+Uso: Redondea hacia abajo un número decimal al entero más cercano.
+Ejemplo:
+javascript
+Copy code
+const decimal = 7.8;
+const entero = Math.floor(decimal);
+console.log(entero); // 7
+
+18. Date()
+Uso: Crea un objeto que representa una fecha y hora.
+Ejemplo:
+javascript
+Copy code
+const fechaActual = new Date();
+console.log(fechaActual);
+
+19. localStorage
+Uso: Proporciona una interfaz de almacenamiento persistente de clave/valor en el navegador.
+Ejemplo:
+javascript
+Copy code
+localStorage.setItem('nombreUsuario', 'Juan');
+const nombreGuardado = localStorage.getItem('nombreUsuario');
+console.log(nombreGuardado); // 'Juan'
+
+20. JSON.stringify() y JSON.parse()
+Uso: Convierte un objeto JavaScript a una cadena JSON y viceversa.
+Ejemplo:
+javascript
+Copy code
+const objeto = { nombre: 'María', edad: 30 };
+const cadenaJSON = JSON.stringify(objeto);
+const objetoDesdeJSON = JSON.parse(cadenaJSON);
+
+21. Array.prototype.find()
+Uso: Devuelve el primer elemento de un array que cumple con una condición dada.
+Ejemplo:
+javascript
+Copy code
+const numeros = [10, 20, 30, 40, 50];
+const encontrado = numeros.find(numero => numero > 25);
+console.log(encontrado); // 30
+
+22. Array.prototype.every()
+Uso: Comprueba si todos los elementos de un array satisfacen una condición dada.
+Ejemplo:
+javascript
+Copy code
+const edades = [18, 22, 25, 30];
+const mayoresDeEdad = edades.every(edad => edad >= 18);
+console.log(mayoresDeEdad); // true
+
+23. Array.prototype.some()
+Uso: Comprueba si al menos un elemento de un array cumple con una condición dada.
+Ejemplo:
+javascript
+Copy code
+const edades = [16, 22, 25, 30];
+const hayMayoresDeEdad = edades.some(edad => edad >= 18);
+console.log(hayMayoresDeEdad); // true
+
+24. Array.prototype.sort()
+Uso: Ordena los elementos de un array.
+Ejemplo:
+javascript
+Copy code
+const numerosDesordenados = [5, 2, 8, 1, 9];
+const numerosOrdenados = numerosDesordenados.sort((a, b) => a - b);
+console.log(numerosOrdenados); // [1, 2, 5, 8, 9]
+
+25. Array.prototype.splice()
+Uso: Cambia el contenido de un array eliminando o reemplazando elementos existentes y/o agregando nuevos elementos.
+Ejemplo:
+javascript
+Copy code
+const frutas = ['Manzana', 'Banana', 'Cereza'];
+frutas.splice(1, 1, 'Naranja', 'Uva');
+console.log(frutas); // ['Manzana', 'Naranja', 'Uva', 'Cereza']
+
+26. String.prototype.toUpperCase() y String.prototype.toLowerCase()
+Uso: Convierte una cadena a mayúsculas o minúsculas.
+Ejemplo:
+javascript
+Copy code
+const mensaje = 'Hola, Mundo!';
+const enMayusculas = mensaje.toUpperCase();
+const enMinusculas = mensaje.toLowerCase();
+console.log(enMayusculas, enMinusculas);
+
+27. String.prototype.trim()
+Uso: Elimina los espacios en blanco al principio y al final de una cadena.
+Ejemplo:
+javascript
+Copy code
+const textoConEspacios = '    Hola, Mundo!    ';
+const textoSinEspacios = textoConEspacios.trim();
+console.log(textoSinEspacios);
+
+28. Array.isArray()
+Uso: Determina si un valor es un array.
+Ejemplo:
+javascript
+Copy code
+const arreglo = [1, 2, 3];
+const esArray = Array.isArray(arreglo);
+console.log(esArray); // true
+
+29. typeof
+Uso: Devuelve una cadena que representa el tipo de un operando.
+Ejemplo:
+javascript
+Copy code
+const numero = 42;
+const tipo = typeof numero;
+console.log(tipo); // 'number'
+
+30. isNaN()
+Uso: Determina si un valor es NaN (No es un Número).
+Ejemplo:
+javascript
+Copy code
+const resultado = 'Hola' / 2;
+const esNaN = isNaN(resultado);
+console.log(esNaN); // true
+
+31. Array.prototype.concat()
+Uso: Combina dos o más arrays creando un nuevo array.
+Ejemplo:
+javascript
+Copy code
+const array1 = [1, 2, 3];
+const array2 = [4, 5, 6];
+const nuevoArray = array1.concat(array2);
+console.log(nuevoArray); // [1, 2, 3, 4, 5, 6]
+
+32. Array.prototype.reverse()
+Uso: Invierte el orden de los elementos de un array.
+Ejemplo:
+javascript
+Copy code
+const array = [1, 2, 3, 4, 5];
+const arrayInvertido = array.reverse();
+console.log(arrayInvertido); // [5, 4, 3, 2, 1]
+
+33. Array.prototype.join()
+Uso: Combina todos los elementos de un array en una cadena.
+Ejemplo:
+javascript
+Copy code
+const frutas = ['Manzana', 'Banana', 'Cereza'];
+const cadenaDeFrutas = frutas.join(', ');
+console.log(cadenaDeFrutas); // 'Manzana, Banana, Cereza'
+
+34. Array.prototype.slice()
+Uso: Devuelve una parte del array, seleccionada desde el índice inicial hasta el índice final (sin incluirlo).
+Ejemplo:
+javascript
+Copy code
+const numeros = [1, 2, 3, 4, 5];
+const subArray = numeros.slice(1, 4);
+console.log(subArray); // [2, 3, 4]
+
+35. Array.prototype.indexOf() y Array.prototype.lastIndexOf()
+Uso: indexOf devuelve el primer índice en el que se encuentra un elemento dado en el array, y lastIndexOf devuelve el último índice.
+Ejemplo:
+javascript
+Copy code
+const array = [1, 2, 3, 4, 2];
+const primeraAparicion = array.indexOf(2);
+const ultimaAparicion = array.lastIndexOf(2);
+console.log(primeraAparicion, ultimaAparicion); // 1, 4
+
+36. String.prototype.replace()
+Uso: Reemplaza una subcadena con otra en una cadena.
+Ejemplo:
+javascript
+Copy code
+const mensaje = 'Hola, Mundo!';
+const nuevoMensaje = mensaje.replace('Mundo', 'JavaScript');
+console.log(nuevoMensaje); // 'Hola, JavaScript!'
+
+37. String.prototype.startsWith() y String.prototype.endsWith()
+Uso: Verifica si una cadena comienza o termina con otra cadena dada.
+Ejemplo:
+javascript
+Copy code
+const frase = '¡Bienvenido a JavaScript!';
+console.log(frase.startsWith('¡Bienvenido')); // true
+console.log(frase.endsWith('JavaScript!')); // true
+
+38. Array.prototype.includes()
+Uso: Determina si un array incluye un determinado elemento.
+Ejemplo:
+javascript
+Copy code
+const numeros = [1, 2, 3, 4, 5];
+console.log(numeros.includes(3)); // true
+
+39. Array.prototype.filter()
+Uso: Crea un nuevo array con los elementos que cumplen una condición.
+Ejemplo:
+javascript
+Copy code
+const numeros = [10, 20, 30, 40, 50];
+const mayoresDeTreinta = numeros.filter(numero => numero > 30);
+console.log(mayoresDeTreinta); // [40, 50]
+
+40. Array.prototype.reduceRight()
+Uso: Similar a reduce(), pero comienza desde el último elemento al primer elemento del array.
+Ejemplo:
+javascript
+Copy code
+const numeros = [1, 2, 3, 4];
+const restaDerecha = numeros.reduceRight((acumulador, numero) => acumulador - numero);
+console.log(restaDerecha); // 0
+
+41. Array.prototype.forEach()
+Uso: Ejecuta una función dada una vez por cada elemento del array.
+Ejemplo:
+javascript
+Copy code
+const frutas = ['Manzana', 'Banana', 'Cereza'];
+frutas.forEach(fruta => console.log(fruta));
+42. Array.prototype.map()
+
+Uso: Crea un nuevo array con los resultados de llamar a una función proporcionada para cada elemento del array.
+Ejemplo:
+javascript
+Copy code
+const numeros = [1, 2, 3];
+const duplicados = numeros.map(numero => numero * 2);
+console.log(duplicados); // [2, 4, 6]
+
+43. Array.prototype.every()
+Uso: Comprueba si todos los elementos de un array satisfacen una condición dada.
+Ejemplo:
+javascript
+Copy code
+const edades = [18, 22, 25, 30];
+const mayoresDeEdad = edades.every(edad => edad >= 18);
+console.log(mayoresDeEdad); // true
+
+44. Array.prototype.some()
+Uso: Comprueba si al menos un elemento de un array cumple con una condición dada.
+Ejemplo:
+javascript
+Copy code
+const edades = [16, 22, 25, 30];
+const hayMayoresDeEdad = edades.some(edad => edad >= 18);
+console.log(hayMayoresDeEdad); // true
+
+45. Array.prototype.filter()
+Uso: Crea un nuevo array con todos los elementos que pasan la prueba implementada por la función proporcionada.
+Ejemplo:
+javascript
+Copy code
+const numeros = [1, 2, 3, 4, 5];
+const mayoresDeTres = numeros.filter(numero => numero > 3);
+console.log(mayoresDeTres); // [4, 5]
+
+46. Array.from()
+Uso: Crea un nuevo array a partir de un objeto iterable o array-like.
+Ejemplo:
+javascript
+Copy code
+const iterable = '123';
+const arrayDeCifras = Array.from(iterable, cifra => parseInt(cifra));
+console.log(arrayDeCifras); // [1, 2, 3]
+
+47. Array.prototype.reduce()
+Uso: Aplica una función acumuladora contra un array y reduce este array a un solo valor.
+Ejemplo:
+javascript
+Copy code
+const numeros = [1, 2, 3, 4, 5];
+const suma = numeros.reduce((acumulador, numero) => acumulador + numero, 0);
+console.log(suma); // 15
+
+48. String.prototype.charAt()
+Uso: Devuelve el carácter en la posición especificada en una cadena.
+Ejemplo:
+javascript
+Copy code
+const palabra = 'JavaScript';
+const tercerCaracter = palabra.charAt(2);
+console.log(tercerCaracter); // 'v'
+
+49. String.prototype.substring()
+Uso: Devuelve un subconjunto de una cadena entre dos índices especificados.
+Ejemplo:
+javascript
+Copy code
+const frase = '¡Hola, Mundo!';
+const subcadena = frase.substring(5, 10);
+console.log(subcadena); // 'Mundo'
+
+50. Math.max() y Math.min()
+Uso: Devuelven el valor máximo o mínimo de un conjunto de valores.
+Ejemplo:
+javascript
+Copy code
+const numeros = [2, 5, 8, 1, 4];
+const maximo = Math.max(...numeros);
+const minimo = Math.min(...numeros);
+console.log(maximo, minimo); // 8, 1
+
+51. Array.prototype.splice()
+Uso: Cambia el contenido de un array eliminando o reemplazando elementos existentes y/o agregando nuevos elementos.
+Ejemplo:
+javascript
+Copy code
+const frutas = ['Manzana', 'Banana', 'Cereza'];
+frutas.splice(1, 1, 'Naranja', 'Uva');
+console.log(frutas); // ['Manzana', 'Naranja', 'Uva', 'Cereza']
+52. Array.prototype.fill()
+Uso: Rellena todos los elementos de un array con un valor estático.
+Ejemplo:
+javascript
+Copy code
+const numeros = [1, 2, 3, 4, 5];
+numeros.fill(0);
+console.log(numeros); // [0, 0, 0, 0, 0]
+53. Array.prototype.unshift() y Array.prototype.shift()
+Uso: unshift añade uno o más elementos al principio del array, y shift elimina el primer elemento del array.
+Ejemplo:
+javascript
+Copy code
+const frutas = ['Manzana', 'Banana', 'Cereza'];
+frutas.unshift('Naranja');
+console.log(frutas); // ['Naranja', 'Manzana', 'Banana', 'Cereza']
+frutas.shift();
+console.log(frutas); // ['Manzana', 'Banana', 'Cereza']
+54. Array.prototype.indexOf() y Array.prototype.lastIndexOf()
+Uso: indexOf devuelve el primer índice en el que se encuentra un elemento dado en el array, y lastIndexOf devuelve el último índice.
+Ejemplo:
+javascript
+Copy code
+const array = [1, 2, 3, 4, 2];
+const primeraAparicion = array.indexOf(2);
+const ultimaAparicion = array.lastIndexOf(2);
+console.log(primeraAparicion, ultimaAparicion); // 1, 4
+55. Object.values() y Object.entries()
+Uso: Object.values devuelve un array con los valores de las propiedades de un objeto, y Object.entries devuelve un array con pares clave-valor.
+Ejemplo:
+javascript
+Copy code
+const persona = { nombre: 'Ana', edad: 28, ocupacion: 'Programadora' };
+const valores = Object.values(persona);
+const entradas = Object.entries(persona);
+console.log(valores); // ['Ana', 28, 'Programadora']
+console.log(entradas); // [['nombre', 'Ana'], ['edad', 28], ['ocupacion', 'Programadora']]
+
+56. Object.freeze()
+Uso: Congela un objeto, lo que significa que no se pueden agregar, eliminar o modificar sus propiedades existentes.
+Ejemplo:
+javascript
+Copy code
+const objeto = { clave: 'valor' };
+Object.freeze(objeto);
+objeto.clave = 'nuevoValor'; // No tiene efecto en modo estricto
+console.log(objeto); // { clave: 'valor' }
+
+57. Date.prototype.toISOString()
+Uso: Devuelve una cadena de texto en formato ISO (UTC) que representa la fecha y la hora.
+Ejemplo:
+javascript
+Copy code
+const fechaActual = new Date();
+const cadenaISO = fechaActual.toISOString();
+console.log(cadenaISO);
+
+58. Math.round()
+Uso: Redondea al número entero más cercano.
+Ejemplo:
+javascript
+Copy code
+const numeroDecimal = 5.4;
+const redondeado = Math.round(numeroDecimal);
+console.log(redondeado); // 5
+
+59. Math.pow()
+Uso: Devuelve la base elevada a la potencia del exponente.
+Ejemplo:
+javascript
+Copy code
+const resultado = Math.pow(2, 3);
+console.log(resultado); // 8
+
+60. setTimeout() y clearTimeout()
+Uso: setTimeout ejecuta una función después de un cierto tiempo, y clearTimeout cancela un temporizador establecido con setTimeout.
+Ejemplo:
+javascript
+Copy code
+const mensaje = () => console.log('¡Tiempo cumplido!');
+const temporizador = setTimeout(mensaje, 2000);
+// clearTimeout(temporizador); // Puedes cancelar el temporizador antes de que se complete
+Estas funciones adicionales proporcionan aún más herramientas para trabajar con arrays, objetos, fechas y matemáticas en JavaScript. ¡Espero que encuentres útiles estas sugerencias!

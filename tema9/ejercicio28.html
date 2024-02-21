@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Tareas Domésticas</title>
+  </head>
+  <body>
+    <script>
+      // Función para simular la obtención de la lista de tareas
+      function obtenerListaTareas(callback) {
+        setTimeout(() => {
+          const listaTareas = [
+            { tarea: "Lavar los platos", completada: false },
+            { tarea: "Limpiar el baño", completada: false },
+            { tarea: "Sacar la basura", completada: false },
+          ];
+          callback(null, listaTareas);
+        }, 1000);
+      }
+
+      // Función para simular la actualización del estado de una tarea
+      function actualizarEstadoTarea(tarea, callback) {
+        setTimeout(() => {
+          tarea.completada = true;
+          callback(null, tarea);
+        }, 1000);
+      }
+
+      // Función para imprimir el estado de una tarea
+      function imprimirEstadoTarea(tarea) {
+        console.log(`${tarea.tarea}: ${tarea.completada ? "Completada" : "Pendiente"}`);
+      }
+
+      // Callback hell: Obtener lista de tareas, actualizar el estado de cada una y luego imprimir el estado actualizado
+      obtenerListaTareas((error, listaTareas) => {
+        if (error) {
+          console.error("Error al obtener la lista de tareas:", error);
+        } else {
+          listaTareas.forEach((tarea, index) => {
+            actualizarEstadoTarea(tarea, (error, tareaActualizada) => {
+              if (error) {
+                console.error(`Error al actualizar la tarea ${index + 1}:`, error);
+              } else {
+                imprimirEstadoTarea(tareaActualizada);
+              }
+            });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

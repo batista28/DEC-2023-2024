@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones con Elementos</title>
+</head>
+<body>
+
+<script>
+    function pedirValores() {
+        let booleano1 = prompt("Introduce el primer valor booleano:");
+        let booleano2 = prompt("Introduce el segundo valor booleano:");
+        let numero1 = prompt("Introduce el primer valor numérico:");
+        let numero2 = prompt("Introduce el segundo valor numérico:");
+        let cadena1 = prompt("Introduce la primera cadena de caracteres:");
+        let cadena2 = prompt("Introduce la segunda cadena de caracteres:");
+
+        // Comprobar si alguno de los elementos es nulo y pedir al usuario que reintroduzca los valores
+        if (booleano1 === null || booleano2 === null || numero1 === null || numero2 === null || cadena1 === null || cadena2 === null) {
+            alert("Por favor, introduce todos los valores nuevamente.");
+            pedirValores();
+        } else {
+            // Convertir valores booleanos a tipo booleano
+            booleano1 = Boolean(booleano1);
+            booleano2 = Boolean(booleano2);
+
+            // Convertir valores numéricos a tipo numérico
+            numero1 = Number(numero1);
+            numero2 = Number(numero2);
+
+            // Determinar cuál de los dos elementos de texto es mayor
+            let mayorCadena = (cadena1.length > cadena2.length) ? cadena1 : cadena2;
+
+            // Determinar el resultado de las operaciones lógicas
+            let resultadoLogico1 = booleano1 && booleano2;
+            let resultadoLogico2 = booleano1 || booleano2;
+
+            // Determinar el resultado de las operaciones aritméticas
+            let resultadoAritmetico1 = numero1 + numero2;
+            let resultadoAritmetico2 = numero1 * numero2;
+
+            // Crear un nuevo array ordenado
+            let nuevoArray = [booleano1, booleano2, cadena1, cadena2, numero1, numero2];
+            nuevoArray.sort((a, b) => b - a);
+
+            // Mostrar los resultados en la página web
+            document.write(`<p>El elemento de texto mayor es: ${mayorCadena}</p>`);
+            document.write(`<p>Resultado de la operación lógica AND: ${resultadoLogico1}</p>`);
+            document.write(`<p>Resultado de la operación lógica OR: ${resultadoLogico2}</p>`);
+            document.write(`<p>Resultado de la operación aritmética suma: ${resultadoAritmetico1}</p>`);
+            document.write(`<p>Resultado de la operación aritmética multiplicación: ${resultadoAritmetico2}</p>`);
+            document.write(`<p>Array ordenado: ${nuevoArray}</p>`);
+        }
+    }
+
+    // Llamar a la función al cargar la página
+    pedirValores();
+</script>
+
+</body>
+</html>

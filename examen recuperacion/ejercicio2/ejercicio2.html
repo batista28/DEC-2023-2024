@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ejercicio2</title>
+  </head>
+  <body>
+    <script>
+      let contadorOpciones = [0, 0, 0];
+      //aqui cremos la funcio para aumetar el contador de opciones para saber cuanta veces hemos entrado en cada opcion
+      function aumentarContadorOpcion(opcion) {
+        contadorOpciones[opcion - 1]++;
+      }
+
+      //aqui la funcion para mostrar el numero de veces que se eligio cada opcion
+      function mostrarContadorOpciones() {
+        console.log(`Número de veces que se eligió cada opción: ${contadorOpciones}`);
+      }
+
+      function seleccionarOpcion() {
+        let opcion = prompt(
+          `Selecciona una opción:
+          \n1. Suma recursiva
+          \n2. Cadena con más vocales
+          \n3. Salir`
+        );
+        return opcion;
+      }
+      //aqui haremos para ejecutar  la opcion elegida
+      function ejecutarOpcion(opcion) {
+        if (opcion === "1") {
+          aumentarContadorOpcion(1);
+          let num1 = parseInt(prompt("Introduce el primer número:"));
+          let num2 = parseInt(prompt("Introduce el segundo número:"));
+          let resultado = sumaRecursiva(num1, num2);
+          alert(`El resultado de la suma recursiva es: ${resultado}`);
+        } else if (opcion === "2") {
+          aumentarContadorOpcion(2);
+          let cadena1 = prompt("Introduce la primera cadena que quieras introducir:");
+          let cadena2 = prompt("Introduce la segunda cadena que quieras introducir:");
+          let resultado = cadenaConMasVocales(cadena1, cadena2);
+          alert(`La cadena con mas vocales es: ${resultado}`);
+        } else if (opcion === "3") {
+          aumentarContadorOpcion(3);
+          alert("¡El programa ha terminado!");
+          mostrarContadorOpciones();
+          return true; // Indica que se debe terminar la ejecución
+        } else {
+          alert("Opcion no valida. Por favor, selecciona una opcion valida.");
+        }
+        return false; // Indica que se debe continuar la ejecución
+      }
+
+      while (true) {
+        let opcion = seleccionarOpcion();
+        let terminado = ejecutarOpcion(opcion);
+        if (terminado) {
+          break;
+        }
+      }
+
+      function sumaRecursiva(num1, num2) {
+        if (num2 === 0) {
+          return num1;
+        } else {
+          return sumaRecursiva(num1 + 1, num2 - 1);
+        }
+      }
+
+      function contarVocales(cadena) {
+        const vocales = cadena.match(/[aeiou]/gi);
+        return vocales ? vocales.length : 0;
+      }
+
+      function cadenaConMasVocales(cadena1, cadena2) {
+        const vocalesCadena1 = contarVocales(cadena1);
+        const vocalesCadena2 = contarVocales(cadena2);
+        return vocalesCadena1 >= vocalesCadena2 ? cadena1 : cadena2;
+      }
+    </script>
+  </body>
+</html>

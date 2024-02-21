@@ -30,14 +30,14 @@
         }
 
         // Función para mover la caja azul a una posición aleatoria cuando el mouse se coloca sobre ella
-        function moveBoxRandomly() {
+        function moverCajaAleatoriamente() {
           const newPosition = getRandomPosition();
           cajaAzul.style.left = newPosition.x + "px";
           cajaAzul.style.top = newPosition.y + "px";
         }
 
         // Detecta cuando el mouse se coloca sobre la caja azul y llama a la función para moverla aleatoriamente
-        blueBox.addEventListener("mouseover", moveBoxRandomly);
+        cajaAzul.addEventListener("mouseover", moverCajaAleatoriamente);
       });
     </script>
   </body>

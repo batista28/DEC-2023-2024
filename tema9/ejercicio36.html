@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejemplo de Fetch y Async/Await</title>
+  </head>
+  <body>
+    <script>
+      async function obtenerDatos(url) {
+        try {
+          const respuesta = await fetch(url); // Realizar la solicitud HTTP
+          if (!respuesta.ok) {
+            throw new Error("Error al obtener los datos"); // Lanzar un error si la respuesta no es exitosa
+          }
+          const datos = await respuesta.json(); // Convertir la respuesta a JSON
+          console.log("Datos obtenidos:", datos); // Imprimir los datos en la consola
+        } catch (error) {
+          console.error("Error:", error.message); // Capturar y manejar cualquier error
+        }
+      }
+
+      // Llamar a la función obtenerDatos con la URL de la API
+      obtenerDatos("https://jsonplaceholder.typicode.com/posts/1");
+    </script>
+
+    <!-- Ventajas de esta solución:
+  - Claridad y legibilidad del código: El uso de async/await hace que el código sea más fácil de leer y entender, ya que se asemeja a la estructura de código síncrono.
+  - Manejo simplificado de errores: El uso de try...catch permite capturar y manejar fácilmente cualquier error que ocurra tanto en la solicitud como en el procesamiento de la respuesta.
+  - Ejecución secuencial: Aunque Fetch realiza solicitudes de forma asíncrona, el uso de async/await asegura que el código se ejecute de manera secuencial, lo que facilita el control del flujo de la aplicación.
+  - Mayor facilidad de integración: Fetch es una API moderna y flexible que es compatible con Promises, lo que facilita su integración con código asíncrono utilizando async/await. Esto proporciona una forma más sencilla y concisa de manejar solicitudes HTTP en comparación con el uso de callbacks o Promises directamente.
+-->
+  </body>
+</html>

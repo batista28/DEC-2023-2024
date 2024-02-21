@@ -1,0 +1,18 @@
+{
+  "nombre": "Antonio Batista",
+  "edad": 28,
+  "educacion": [
+    {
+      "institucion": "IES Mar de Cádiz",
+      "titulo": "Grado Medio de Telecomunicaciones"
+    },
+    {
+      "institucion": "IES Mar de Cádiz",
+      "titulo": "Grado Superior de Desarrollo de Aplicaciones Web (DAW)"
+    }
+  ],
+  "habilidades": {
+    "frontend": true,
+    "backend": true
+  }
+}

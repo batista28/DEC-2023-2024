@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <header></header>
+  <body>
+    <script>
+      const videojuegos = [
+        "Hollow knight",
+        "the divisions",
+        "god of war",
+        "the division 2",
+        "spyro the dragon",
+      ];
+
+      function buscarVideojuegos(videojuego) {
+        return videojuegos.findIndex(
+          (videojuegos) => videojuegos.toLowerCase() === videojuego.toLowerCase()
+        );
+      }
+
+      let videojuegoBuscado = prompt("que juego quieres buscar hoy");
+      console.log(buscarVideojuegos(videojuegoBuscado));
+    </script>
+  </body>
+</html>

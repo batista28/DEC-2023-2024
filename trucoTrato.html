@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Truco y Trato</title>
+    </head>
+    <header>
+        <h1>Truco y Trato</h1>
+    </header>
+    <body>
+        <button id="timbre" onclick="pedirCaramelos()">Timbre</button>
+        <button id="volver" onclick="volverACasa()">Volver</button>
+        <button id="volver" onclick="mostrarCaramelitos()">Mostrar</button>
+        <script>
+            /*Truco o trato.
+
+Estamos en halloween y los niños de tu barrio se quieren ir a pedir caramelos. 
+
+- Haz una funcion autoejecutable que haga que te pregunte si estas disfrazado (por console.log)
+
+- Haz una funcion por expresion/anonima (a tu eleccion) que reciba como 
+parametro un numero, si el numero es par significa que estas 
+disfrzado (devuelve true) si el numero es impar, no lo estas (devuelve false).
+
+- Haz una funcion clausura en la que pidas caramelos y guardes 
+los datos fuera de la funcion en un array llamado chucherias, 
+la funcion se usara cada vez que pulses un boton llamado "timbre".
+
+- Haz una funcion que cuando pulses un boton llamado "volver"
+ te salga una diciendo que has vuelto a casa.*/
+            (function () {
+                const preguntaDisfrazado = window.confirm("¿Estas disfrazados");
+                console.log(
+                    preguntaDisfrazado ? "perfecto disfruta de la noche de hallowen" : "no vas disfrazado que pena "
+                );
+            })();
+
+            const esPar = function esPar(numero) {
+                return numero % 2 == 0;
+            };
+
+            function volverACasa() {
+                alert("te has ido para tu casa ");
+            }
+
+            const pedirCaramelos = (function () {
+                const caramelitos = [];
+
+                return function () {
+                    const nombre = prompt("truco o tartro como te llamas¿");
+                    caramelitos.push(nombre + "ha exigido caramelitos");
+                    console.log("caramelos añadidos a la bolsa");
+                };
+            })();
+
+            function mostrarCaramelitos() {
+                if (caramelitos.length > 0) {
+                    alert("caramelitos opbtenidos:\n" + caramelitos.join("\n"));
+                }
+            }
+        </script>
+    </body>
+</html>

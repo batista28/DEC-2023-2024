@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Información de Star Wars</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="persona1">
+        <h2>Persona 1</h2>
+        <p id="persona1-info"></p>
+      </div>
+      <div id="planeta1">
+        <h2>Planeta 1</h2>
+        <p id="planeta1-info"></p>
+      </div>
+      <div id="nave1">
+        <h2>Nave 1</h2>
+        <p id="nave1-info"></p>
+      </div>
+    </div>
+
+    <script>
+      async function fetchData(url, targetId) {
+        try {
+          const response = await fetch(url);
+          const data = await response.json();
+          const info = formatData(data);
+          document.getElementById(targetId).innerHTML = info;
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      }
+
+      function formatData(data) {
+        return JSON.stringify(data, null, 2);
+      }
+
+      window.onload = function () {
+        const baseUrl = "https://swapi.dev/api";
+        fetchData(baseUrl + "/people/1/", "persona1-info");
+        fetchData(baseUrl + "/planets/1/", "planeta1-info");
+        fetchData(baseUrl + "/starships/2/", "nave1-info"); // Cambié el ID de la nave a 9 (Millennium Falcon)
+      };
+    </script>
+  </body>
+</html>

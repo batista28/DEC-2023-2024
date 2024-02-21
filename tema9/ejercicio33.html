@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Currículum</title>
+  </head>
+  <body>
+    <div id="curriculum"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("micurriculo.json")
+          .then((response) => response.json())
+          .then((data) => {
+            const curriculumDiv = document.getElementById("curriculum");
+            curriculumDiv.innerHTML = `
+            <h1>${data.nombre}</h1>
+            <p>Edad: ${data.edad}</p>
+            <h2>Educación</h2>
+            <ul>
+              ${data.educacion
+                .map((item) => `<li>${item.titulo} en ${item.institucion}</li>`)
+                .join("")}
+            </ul>
+            <h2>Habilidades</h2>
+            <p>Frontend: ${data.habilidades.frontend ? "Sí" : "No"}</p>
+            <p>Backend: ${data.habilidades.backend ? "Sí" : "No"}</p>
+          `;
+          })
+          .catch((error) => console.error("Error al cargar el currículum:", error));
+      });
+    </script>
+  </body>
+</html>

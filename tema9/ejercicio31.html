@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promesas Pokémon</title>
+  </head>
+  <body>
+    <script>
+      // Función para simular una solicitud de datos sobre un Pokémon
+      function obtenerDatosPokemon(nombrePokemon) {
+        return new Promise((resolver, rechazar) => {
+          // Simulando una solicitud de datos que tarda 1 segundo
+          setTimeout(() => {
+            const datosPokemon = {
+              nombre: nombrePokemon,
+              tipo: "Eléctrico",
+              poder: 90,
+            };
+            resolver(datosPokemon);
+          }, 1000);
+        });
+      }
+
+      // Encadenamiento de acciones después de obtener los datos del Pokémon
+      obtenerDatosPokemon("Pikachu")
+        .then((datosPokemon) => {
+          console.log("Datos del Pokémon obtenidos:", datosPokemon);
+          return datosPokemon.poder * 2; // Doble del poder del Pokémon
+        })
+        .then((poderDoble) => {
+          console.log("El doble del poder del Pokémon es:", poderDoble);
+          return poderDoble + 10; // Añadir 10 al doble del poder del Pokémon
+        })
+        .then((poderFinal) => {
+          console.log("El poder final del Pokémon es:", poderFinal);
+        })
+        .catch((error) => {
+          console.error("Error al obtener datos del Pokémon:", error);
+        });
+    </script>
+  </body>
+</html>

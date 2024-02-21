@@ -1,0 +1,10 @@
+INSTALACION LARAVEL
+(NECESITAMO COMPOSE Y NPM(NODEJS) INSTALADO)
+
+
+version de laravel
+php artisan --version
+
+//configuracion bd
+
+editar fichero.env

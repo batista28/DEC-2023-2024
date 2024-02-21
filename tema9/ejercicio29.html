@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detector de carga del DOM</title>
+  </head>
+  <body>
+    <script>
+      function cargarDOM() {
+        return new Promise((resolve, reject) => {
+          if (document.readyState === "loading") {
+            // El DOM aún se está cargando
+            console.log("CARGANDO");
+            document.addEventListener("DOMContentLoaded", () => {
+              // El DOM se ha cargado completamente
+              console.log("LISTO PARA ACTUAR");
+              resolve();
+            });
+          } else {
+            // El DOM ya está completamente cargado
+            console.log("LISTO PARA ACTUAR");
+            resolve();
+          }
+        });
+      }
+
+      // Llamar a la función cargarDOM para detectar cuando el DOM esté completamente cargado
+      cargarDOM().then(() => {
+        // Aquí puedes realizar cualquier acción adicional que desees una vez que el DOM esté cargado
+        console.log("Realizar otras acciones...");
+      });
+    </script>
+  </body>
+</html>

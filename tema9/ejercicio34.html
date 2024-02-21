@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buscar en Mercado Libre</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: rgb(248, 180, 8);
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      form {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      input[type="text"] {
+        width: 300px;
+        padding: 10px;
+        font-size: 16px;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      #results {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .result {
+        margin-bottom: 20px;
+      }
+
+      .result img {
+        max-width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Buscar en Mercado Libre</h1>
+    <form id="search-form">
+      <input type="text" id="search-input" placeholder="Introduce palabras clave..." />
+      <button type="submit">Buscar</button>
+    </form>
+    <div id="results"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#search-form").submit(function (event) {
+          event.preventDefault();
+          var query = $("#search-input").val();
+          if (query.trim() !== "") {
+            searchMercadoLibre(query);
+          }
+        });
+
+        function searchMercadoLibre(query) {
+          var url = "https://api.mercadolibre.com/sites/MLA/search?q=" + encodeURIComponent(query);
+          $.get(url, function (data) {
+            displayResults(data.results.slice(0, 3));
+          });
+        }
+
+        function displayResults(results) {
+          var resultsContainer = $("#results");
+          resultsContainer.empty();
+          results.forEach(function (result) {
+            var resultHtml =
+              '<div class="result">' +
+              "<h3>" +
+              result.title +
+              "</h3>" +
+              "<p>" +
+              result.price +
+              "</p>" +
+              '<img src="' +
+              result.thumbnail +
+              '" alt="' +
+              result.title +
+              '">' +
+              "</div>";
+            resultsContainer.append(resultHtml);
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

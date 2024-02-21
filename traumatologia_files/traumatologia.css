@@ -1,0 +1,303 @@
+/* Estilos para el encabezado */
+header {
+  background-color: #315d75;
+  width: 100%;
+  height: 117px;
+  text-align: right;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+/* Estilos para las pestañas en el encabezado */
+.tab-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+  margin-right: -35px;
+  position: relative;
+}
+
+.tab {
+  display: inline-block;
+  background-color: #2cb89f;
+  width: 180px;
+  height: 45px;
+  margin-right: 35px;
+  line-height: 45px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+  border-radius: 10%;
+}
+
+#salud-tab {
+  font-size: 24px;
+  text-transform: lowercase;
+  color: white;
+  background-color: transparent;
+  margin-top: 1em;
+  line-height: 45px;
+  margin-right: 12em; /* Reducir el margen derecho */
+}
+
+#salud-tab:hover {
+  background-color: transparent;
+}
+
+.small-tab {
+  background-color: #2cb89f;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+}
+/* Estilo del menú desplegable de iniciar sesión */
+.login-menu {
+  position: absolute;
+  top: 165px;
+  right: 0;
+  display: none;
+  background-color: #2cb89f;
+  border: 1px solid #aaaaaa;
+  border-radius: 25px;
+  padding: 10px;
+  width: 280px;
+}
+
+#loginTab {
+  margin-left: auto;
+  margin-right: 20px;
+  margin-top: 1em;
+  margin-right: 1em;
+}
+
+.login-menu input {
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.login-menu button {
+  background-color: #315d75;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Nueva sección para la imagen de la lupa y el menú de búsqueda */
+.search-section {
+  position: relative;
+  display: inline-block;
+  margin-left: 20px;
+}
+
+#searchIcon {
+  width: 50px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.search-menu {
+  position: absolute;
+  top: 80px;
+  left: -70px;
+  display: none;
+  background-color: #2cb89f;
+  border: 1px solid #aaaaaa;
+  border-radius: 25px;
+  padding: 10px;
+}
+
+/* Estilos para el menú de navegación */
+nav {
+  background-color: #2cb89f;
+  width: 310px;
+  height: 568px;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-link {
+  position: relative;
+  color: white;
+}
+
+.nav-link:hover .nav-dropdown {
+  display: block;
+}
+
+.nav-dropdown {
+  display: none;
+  position: absolute;
+  background-color: #2cb89f;
+  padding: 10px;
+  z-index: 1;
+  border-radius: 5px;
+  top: 100%;
+  left: 0;
+}
+
+.nav-dropdown a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  margin: 5px 0;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+}
+
+#logo {
+  width: 9em;
+  height: 9em;
+  margin-right: 20px;
+}
+
+/* Estilos para el contenido principal */
+main {
+  margin-left: 330px;
+  padding: 20px;
+}
+
+.nav-link a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  margin: 5px 0;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+}
+
+/* Estilos para el pie de página */
+footer {
+  position: fixed;
+  bottom: 0;
+  background-color: #315d75;
+  width: 100%;
+  height: 85px;
+  clear: both;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+/* Estilos para el carrusel de imágenes */
+.image-carousel {
+  margin-top: 20px;
+}
+
+.carousel-container {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  gap: 10px;
+}
+
+.carousel-group {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  gap: 10px;
+  width: calc((200px + 10px) * 4);
+}
+
+.image-link {
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.image-link:hover {
+  background-color: #2cb89f;
+}
+
+.image-link img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.carousel-navigation {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.arrow {
+  font-size: 2em;
+  color: #2cb89f;
+  cursor: pointer;
+  user-select: none;
+}
+
+.left-arrow {
+  margin-left: 10px;
+}
+
+.right-arrow {
+  margin-right: 10px;
+}
+
+.image-link:hover .doctor-info {
+  display: block;
+}
+
+h1 {
+  color: #2cb89f;
+  text-align: center;
+}
+
+/* Estilos para la información sobre los doctores */
+.doctor-info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background-color: #2cb89f;
+  text-align: center;
+  font-size: 1.2em;
+  display: none;
+  width: 10em;
+  height: 10em;
+}
+
+.image-link:hover .doctor-info {
+  display: block;
+}
+
+/* Estilos adicionales */
+.accessibility-button {
+  background-color: #2cb89f;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 4em;
+  cursor: pointer;
+  float: right;
+  clear: both;
+}

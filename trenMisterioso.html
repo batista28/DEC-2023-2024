@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Misterio del tren</title>
+    </head>
+    <header>Misterio del tren</header>
+    <body>
+        <script>
+            /*El misterio del tren.
+
+Hay un tren (un array) que tiene muchos pasajeros con sus 
+propias cosas (un array por cada pasajero), los pasajeros
+ tienen nombre y estado (vivo o muerto).
+
+- Haz una funcion que reciba el array del tren y añadas 
+un pasajero con un nombre (el que quieras) y este vivo.
+
+- Haz una funcion para mostrar cuantos pasajeros tiene el tren.
+
+- Haz una funcion para mostrar solo el nombre 
+de todos los pasajero del tren.
+
+Haz otra para mostrar 
+solamente el estado de cada pasajero.
+
+- Haz una funcion para mostrar el nombre de un
+ solo pasajero del tren y tu puedas escoger cual introduciendo el numero.
+
+- Haz una funcion para mostrar el estado de 
+un pasajero en concreto buscandolo por su nombre.
+
+- Haz una funcion para matar a un pasajero (cambiar su estado de vivo a muerto).
+
+Tren => [[],[],[]] Array con mas arrays .
+Pasajero => ["Juanjo", "vivo"] Array que tiene dos datos, el primero es para el nombre, 
+el segundo para el estado.*/
+            function agregarPasajero(tren, nombre) {
+                tren.push([nombre, "vivo"]);
+            }
+
+            function mostrarCantidadPasajero(tren) {
+                return tren.length;
+            }
+
+            function mostrarNombre(tren) {
+                return tren.map((pasajero) => pasajero[0]);
+            }
+
+            function mostrarEstado(tren) {
+                return tren.map((pasajero) => pasajero[1]);
+            }
+
+            function mostrarTodo(tren) {
+                return tren.map((pasajero) => `${pasajero[0]}, ${pasajero[1]}`);
+            }
+
+            let tren = [];
+
+            agregarPasajero(tren, "Jose");
+            agregarPasajero(tren, "Jose luis");
+            console.log("cantidad de pasajeros:", mostrarCantidadPasajero(tren));
+
+            console.log("nombre de los pasajeros: ", mostrarNombre(tren));
+
+            console.log("estado de los pasajeros: ", mostrarEstado(tren));
+            console.log(mostrarTodo(tren));
+        </script>
+    </body>
+</html>

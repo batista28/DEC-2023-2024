@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ejercicio1</title>
+  </head>
+  <body>
+    <script>
+      // Función para verificar si un número es entero positivo mayor que 2
+      function esEnteroPositivoMayorQueDos(num) {
+        return Number.isInteger(num) && num > 2;
+      }
+
+      //funcion para generar una matriz de tamaño nxn
+      function generarMatriz(n) {
+        const matriz = [];
+        for (let i = 0; i < n; i++) {
+          matriz.push(new Array(n).fill(null));
+        }
+        return matriz;
+      }
+
+      //no se me rellena como yo quiero intento que se rellene entera pero no me funciona
+      function rellenarMatriz(matriz, n) {
+        const numerosUsados = new Set();
+        for (let i = 0; i < 2; i++) {
+          let numAleatorio;
+          do {
+            numAleatorio = Math.floor(Math.random() * (n * n));
+          } while (numerosUsados.has(numAleatorio));
+          numerosUsados.add(numAleatorio);
+
+          const fila = Math.floor(numAleatorio / n);
+          const columna = numAleatorio % n;
+          matriz[fila][columna] = numAleatorio;
+        }
+      }
+
+      function matrizCompleta(matriz) {
+        return matriz.every((fila) => fila.every((celda) => celda !== null));
+      }
+
+      function encontrarPareja(matriz, n) {
+        if (matrizCompleta(matriz)) {
+          console.log("La matriz está completa.");
+          for (let intento = 1; intento <= 5; intento++) {
+            let fila, columna, fila2, columna2;
+
+            do {
+              fila = parseInt(
+                prompt(`Intento ${intento}: Ingrese la fila de la primera celda (0 - ${n - 1}):`)
+              );
+              columna = parseInt(
+                prompt(`Intento ${intento}: Ingrese la columna de la primera celda (0 - ${n - 1}):`)
+              );
+            } while (
+              isNaN(fila) ||
+              fila < 0 ||
+              fila >= n ||
+              isNaN(columna) ||
+              columna < 0 ||
+              columna >= n
+            );
+
+            const valor1 = matriz[fila][columna];
+
+            do {
+              fila2 = parseInt(
+                prompt(`Intento ${intento}: Ingrese la fila de la segunda celda (0 - ${n - 1}):`)
+              );
+              columna2 = parseInt(
+                prompt(`Intento ${intento}: Ingrese la columna de la segunda celda (0 - ${n - 1}):`)
+              );
+            } while (
+              isNaN(fila2) ||
+              fila2 < 0 ||
+              fila2 >= n ||
+              isNaN(columna2) ||
+              columna2 < 0 ||
+              columna2 >= n
+            );
+
+            const valor2 = matriz[fila2][columna2];
+
+            if (valor1 !== null && valor2 !== null && valor1 === valor2) {
+              console.log("¡Lo ha logrado!");
+              return;
+            } else {
+              console.log("Otra vez será.");
+            }
+          }
+          console.log("Se han agotado los intentos.");
+        } else {
+          console.log("La matriz no está completa.");
+        }
+      }
+
+      //Funcion para  empezar a jugar
+      function jugar() {
+        let n;
+        do {
+          n = parseInt(prompt("Ingrese un número entero positivo mayor que 2 (o 0 para salir):"));
+        } while (n !== 0 && !esEnteroPositivoMayorQueDos(n));
+
+        if (n === 0) {
+          console.log("El juego ha finalizado.");
+          return;
+        }
+
+        const matriz = generarMatriz(n);
+        rellenarMatriz(matriz, n);
+        console.log("Matriz generada:", matriz);
+
+        encontrarPareja(matriz, n);
+      }
+
+      // iniciamos el juego
+      jugar();
+    </script>
+  </body>
+</html>

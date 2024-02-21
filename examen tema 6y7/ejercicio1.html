@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7 y Medio</title>
+    <style>
+      body {
+        background-image: url(cartas/tapete.jpg);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1><u>Juego de cartas 7 y medio</u></h1>
+    </header>
+    <div id="cartasJugador"></div>
+    <div id="cartasBanca"></div>
+    <div id="cartasRestantes"></div>
+    <button id="nuevaCartaBtn">Pedir Carta</button>
+    <button id="plantarseBtn">Plantarse</button>
+    <p id="resultado"></p>
+
+    <script>
+      //Aqui definimos las cartas con su valor respectivo
+      const cartas = [
+        { nombre: "1 de Oros", valor: 1 },
+        { nombre: "2 de Oros", valor: 2 },
+        { nombre: "3 de Oros", valor: 3 },
+        { nombre: "4 de Oros", valor: 4 },
+        { nombre: "5 de Oros", valor: 5 },
+        { nombre: "6 de Oros", valor: 6 },
+        { nombre: "7 de Oros", valor: 7 },
+        { nombre: "8 de Oros", valor: 0.5 },
+        { nombre: "9 de Oros", valor: 0.5 },
+        { nombre: "10 de Oros", valor: 0.5 },
+        { nombre: "1 de Bastos", valor: 1 },
+        { nombre: "2 de Bastos", valor: 2 },
+        { nombre: "3 de Bastos", valor: 3 },
+        { nombre: "4 de Bastos", valor: 4 },
+        { nombre: "5 de Bastos", valor: 5 },
+        { nombre: "6 de Bastos", valor: 6 },
+        { nombre: "7 de Bastos", valor: 7 },
+        { nombre: "8 de Bastos", valor: 0.5 },
+        { nombre: "9 de Bastos", valor: 0.5 },
+        { nombre: "10 de Bastos", valor: 0.5 },
+        { nombre: "1 de Espadas", valor: 1 },
+        { nombre: "2 de Espadas", valor: 2 },
+        { nombre: "3 de Espadas", valor: 3 },
+        { nombre: "4 de Espadas", valor: 4 },
+        { nombre: "5 de Espadas", valor: 5 },
+        { nombre: "6 de Espadas", valor: 6 },
+        { nombre: "7 de Espadas", valor: 7 },
+        { nombre: "8 de Espadas", valor: 0.5 },
+        { nombre: "9 de Espadas", valor: 0.5 },
+        { nombre: "10 de Espadas", valor: 0.5 },
+        { nombre: "1 de Copas", valor: 1 },
+        { nombre: "2 de Copas", valor: 2 },
+        { nombre: "3 de Copas", valor: 3 },
+        { nombre: "4 de Copas", valor: 4 },
+        { nombre: "5 de Copas", valor: 5 },
+        { nombre: "6 de Copas", valor: 6 },
+        { nombre: "7 de Copas", valor: 7 },
+        { nombre: "8 de Copas", valor: 0.5 },
+        { nombre: "9 de Copas", valor: 0.5 },
+        { nombre: "10 de Copas", valor: 0.5 },
+      ];
+
+      let cartasRestantes = [...cartas];
+      let manoJugador = [];
+      let manoBanca = [];
+      let puntajeJugador = 0;
+      let puntajeBanca = 0;
+
+      //aqui creamos una funcion para obtenr las cartas aleatoriamente gracias a math.floor y a random y elminimas la carta qu haya salido de la variable cartasRestantes
+      function obtenerCartaAleatoria() {
+        const indiceAleatorio = Math.floor(Math.random() * cartasRestantes.length);
+        const carta = cartasRestantes[indiceAleatorio];
+        cartasRestantes.splice(indiceAleatorio, 1);
+        return carta;
+      }
+
+      //en esta funcion agregaremo cartas a  la mano
+      function agregarCartaAMano(mano, carta, elementoDestino) {
+        mano.push(carta);
+        elementoDestino.innerHTML += `<p>${carta.nombre}</p>`;
+      }
+
+      //calculamos el puntaje sumando el valor de la carta a la variable puntaje dentro de un for que hemos creado  y mostramo con alert la puntuacion de cada uno
+      function calcularPuntaje(mano) {
+        let puntaje = 0;
+        for (let carta of mano) {
+          puntaje += carta.valor;
+        }
+        alert(puntaje);
+        return puntaje;
+      }
+
+      /*aqui creamos nueestra funcion para vverificar el ganador
+       y lo haremo con un if que si el puntaje de jugado se pasa de 7,5 o no se pase
+       pero la banca tenga mas puntaje que el sin tampoco pasarse gana la banca ,
+       de lo contrario gana el jugador*/
+      function verificarGanador() {
+        let ganador = "";
+
+        if (puntajeJugador > 7.5 || (puntajeJugador < puntajeBanca && puntajeBanca <= 7.5)) {
+          ganador = "banca";
+          document.getElementById("resultado").innerText = "¡Gana la Banca!";
+        } else {
+          ganador = "jugador";
+          document.getElementById("resultado").innerText = "¡Gana el Jugador!";
+        }
+
+        // creeamos  la cookie que registra de quien ha ganado y que expire en 5 minutitos
+        const ahora = new Date();
+        const tiempoExpira = ahora.getTime() + 5 * 60 * 1000; // 5 minutos en milisegundos
+        ahora.setTime(tiempoExpira);
+        document.cookie = `ganador=${ganador};expires=${ahora.toUTCString()};path=/`;
+      }
+
+      function jugar() {
+        const nuevaCartaBtn = document.getElementById("nuevaCartaBtn");
+        const plantarseBtn = document.getElementById("plantarseBtn");
+        const cartasJugadorDiv = document.getElementById("cartasJugador");
+        const cartasBancaDiv = document.getElementById("cartasBanca");
+        const cartasRestantesDiv = document.getElementById("cartasRestantes");
+
+        //aqui crearemos un evento que haya que  pulsa doble click  en el boton para que nos den una nueva carta
+        nuevaCartaBtn.addEventListener("dblclick", function () {
+          const nuevaCarta = obtenerCartaAleatoria();
+          agregarCartaAMano(manoJugador, nuevaCarta, cartasJugadorDiv);
+          puntajeJugador = calcularPuntaje(manoJugador);
+          if (puntajeJugador > 7.5) {
+            verificarGanador();
+          }
+        });
+
+        plantarseBtn.addEventListener("click", function () {
+          while (puntajeBanca < puntajeJugador && puntajeBanca <= 7.5) {
+            const nuevaCarta = obtenerCartaAleatoria();
+            agregarCartaAMano(manoBanca, nuevaCarta, cartasBancaDiv);
+            puntajeBanca = calcularPuntaje(manoBanca);
+          }
+          verificarGanador();
+        });
+
+        // Mostrar cartas restantes
+        cartasRestantesDiv.innerText = `Cartas Restantes: ${cartasRestantes.length}`;
+      }
+
+      //aqui crearemos nuestro evento que cuando pulsemo la tecla f recargarmos la pagina haciendo un if de si el evento.key es === a f hacemos un location.reload para recargala
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "f") {
+          location.reload();
+        }
+      });
+
+      jugar();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+
+header {
+    text-align: center;
+    background-color: #007bff;
+    color: #fff; 
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+
+section {
+   text-align: center;
+    padding: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    margin-bottom: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #007bff;
+}
+
+
+footer {
+    text-align: center;
+    background-color: #333; 
+    color: #fff; 
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

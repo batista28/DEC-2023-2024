@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logotipo de Mitsubishi</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="600" height="600"></canvas>
+    <script>
+      const canvas = document.getElementById("canvas");
+      if (canvas.getContext) {
+        const ctx = canvas.getContext("2d");
+
+        // Define el color rojo para los diamantes
+        ctx.fillStyle = "#FF0000";
+
+        // Función para dibujar un diamante
+        function drawDiamond(centerX, centerY, size) {
+          ctx.beginPath();
+          ctx.moveTo(centerX, centerY - size); // Arriba
+          ctx.lineTo(centerX + size, centerY); // Derecha
+          ctx.lineTo(centerX, centerY + size); // Abajo
+          ctx.lineTo(centerX - size, centerY); // Izquierda
+          ctx.closePath();
+          ctx.fill();
+        }
+
+        // Tamaño y posición de los diamantes
+        let size = 70; // Tamaño del diamante
+        let offsetX = canvas.width / 2;
+        let offsetY = canvas.height / 2;
+        let offsetDiamond = size * Math.sin(Math.PI / 3);
+
+        // Dibuja los tres diamantes para formar el logo
+        drawDiamond(offsetX, offsetY - offsetDiamond, size);
+        drawDiamond(offsetX - size, offsetY + offsetDiamond, size);
+        drawDiamond(offsetX + size, offsetY + offsetDiamond, size);
+      }
+    </script>
+  </body>
+</html>
