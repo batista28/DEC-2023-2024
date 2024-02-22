@@ -55,49 +55,50 @@
   </head>
   <body>
     <h1>Buscar en Mercado Libre</h1>
-    <form id="search-form">
-      <input type="text" id="search-input" placeholder="Introduce palabras clave..." />
+    <form id="formulario-busqueda">
+      <input type="text" id="entrada-busqueda" placeholder="Introduce palabras clave..." />
       <button type="submit">Buscar</button>
     </form>
-    <div id="results"></div>
+    <div id="resultados"></div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
       $(document).ready(function () {
-        $("#search-form").submit(function (event) {
-          event.preventDefault();
-          var query = $("#search-input").val();
-          if (query.trim() !== "") {
-            searchMercadoLibre(query);
+        $("#formulario-busqueda").submit(function (evento) {
+          evento.preventDefault();
+          var consulta = $("#entrada-busqueda").val();
+          if (consulta.trim() !== "") {
+            buscarEnMercadoLibre(consulta);
           }
         });
 
-        function searchMercadoLibre(query) {
-          var url = "https://api.mercadolibre.com/sites/MLA/search?q=" + encodeURIComponent(query);
-          $.get(url, function (data) {
-            displayResults(data.results.slice(0, 3));
+        function buscarEnMercadoLibre(consulta) {
+          var url =
+            "https://api.mercadolibre.com/sites/MLA/search?q=" + encodeURIComponent(consulta);
+          $.get(url, function (datos) {
+            mostrarResultados(datos.results.slice(0, 3));
           });
         }
 
-        function displayResults(results) {
-          var resultsContainer = $("#results");
-          resultsContainer.empty();
-          results.forEach(function (result) {
-            var resultHtml =
+        function mostrarResultados(resultados) {
+          var contenedorResultados = $("#resultados");
+          contenedorResultados.empty();
+          resultados.forEach(function (resultado) {
+            var resultadoHtml =
               '<div class="result">' +
               "<h3>" +
-              result.title +
+              resultado.title +
               "</h3>" +
               "<p>" +
-              result.price +
+              resultado.price +
               "</p>" +
               '<img src="' +
-              result.thumbnail +
+              resultado.thumbnail +
               '" alt="' +
-              result.title +
+              resultado.title +
               '">' +
               "</div>";
-            resultsContainer.append(resultHtml);
+            contenedorResultados.append(resultadoHtml);
           });
         }
       });

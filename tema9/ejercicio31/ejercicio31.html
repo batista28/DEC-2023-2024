@@ -7,7 +7,7 @@
   </head>
   <body>
     <script>
-      // Función para simular una solicitud de datos sobre un Pokémon
+      // Funcion para simular una solicitud de datos sobre un Pokémon
       function obtenerDatosPokemon(nombrePokemon) {
         return new Promise((resolver, rechazar) => {
           // Simulando una solicitud de datos que tarda 1 segundo
@@ -26,11 +26,11 @@
       obtenerDatosPokemon("Pikachu")
         .then((datosPokemon) => {
           console.log("Datos del Pokémon obtenidos:", datosPokemon);
-          return datosPokemon.poder * 2; // Doble del poder del Pokémon
+          return datosPokemon.poder * 2; 
         })
         .then((poderDoble) => {
           console.log("El doble del poder del Pokémon es:", poderDoble);
-          return poderDoble + 10; // Añadir 10 al doble del poder del Pokémon
+          return poderDoble + 10; 
         })
         .then((poderFinal) => {
           console.log("El poder final del Pokémon es:", poderFinal);

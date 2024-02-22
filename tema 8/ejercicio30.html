@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aplicación de Notificaciones</title>
+    <script>
+      var intervaloNotificacion;
+      var enlaceVisitado = false;
+
+      function notificarUsuario() {
+        // Comprobar si el enlace ya ha sido visitado
+        if (enlaceVisitado) {
+          clearInterval(intervaloNotificacion);
+          return;
+        }
+
+        // Crear y mostrar la notificación
+        var notificacion = new Notification("¡Visita el enlace!", {
+          body: "Debes visitar el enlace proporcionado.",
+          icon: "notification-icon.png",
+        });
+
+        // Cerrar automáticamente la notificación después de 5 segundos
+        setTimeout(function () {
+          notificacion.close();
+        }, 5000);
+
+        // Abrir el enlace proporcionado al hacer clic en la notificación
+        notificacion.onclick = function () {
+          window.open("https://www.example.com", "_blank");
+          enlaceVisitado = true;
+        };
+      }
+
+      // Verificar si el navegador es compatible con las notificaciones
+      if ("Notification" in window) {
+        // Solicitar permiso para mostrar notificaciones
+        Notification.requestPermission().then(function (permiso) {
+          if (permiso === "granted") {
+            // Iniciar la notificación cada 30 segundos
+            intervaloNotificacion = setInterval(notificarUsuario, 30000);
+          }
+        });
+      } else {
+        console.log("Las notificaciones no son compatibles en este navegador.");
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Contenido de la página -->
+  </body>
+</html>

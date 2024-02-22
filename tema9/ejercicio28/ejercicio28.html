@@ -7,7 +7,7 @@
   </head>
   <body>
     <script>
-      // Función para simular la obtención de la lista de tareas
+      // Funcionn para simular la obtencion de la lista de tareas que lo haremos con un callback hell
       function obtenerListaTareas(callback) {
         setTimeout(() => {
           const listaTareas = [
@@ -19,7 +19,7 @@
         }, 1000);
       }
 
-      // Función para simular la actualización del estado de una tarea
+      // Funcion para simular la actualizacion del estado de una tarea
       function actualizarEstadoTarea(tarea, callback) {
         setTimeout(() => {
           tarea.completada = true;
@@ -27,12 +27,12 @@
         }, 1000);
       }
 
-      // Función para imprimir el estado de una tarea
+      // Funcion para imprimir el estado de una tarea
       function imprimirEstadoTarea(tarea) {
         console.log(`${tarea.tarea}: ${tarea.completada ? "Completada" : "Pendiente"}`);
       }
 
-      // Callback hell: Obtener lista de tareas, actualizar el estado de cada una y luego imprimir el estado actualizado
+      //  y este es el callback hell de Obtener lista de tareas, actualizar el estado de cada una y luego imprimir el estado actualizado
       obtenerListaTareas((error, listaTareas) => {
         if (error) {
           console.error("Error al obtener la lista de tareas:", error);

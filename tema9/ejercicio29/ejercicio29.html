@@ -10,7 +10,7 @@
       function cargarDOM() {
         return new Promise((resolve, reject) => {
           if (document.readyState === "loading") {
-            // El DOM aún se está cargando
+            // El DOM aun se está cargando
             console.log("CARGANDO");
             document.addEventListener("DOMContentLoaded", () => {
               // El DOM se ha cargado completamente
@@ -18,16 +18,15 @@
               resolve();
             });
           } else {
-            // El DOM ya está completamente cargado
+            // El DOM ya esta completamente cargado
             console.log("LISTO PARA ACTUAR");
             resolve();
           }
         });
       }
 
-      // Llamar a la función cargarDOM para detectar cuando el DOM esté completamente cargado
+      // Llamamos a la funcion cargarDOM para detectar cuando el DOM esté completamente cargado
       cargarDOM().then(() => {
-        // Aquí puedes realizar cualquier acción adicional que desees una vez que el DOM esté cargado
         console.log("Realizar otras acciones...");
       });
     </script>

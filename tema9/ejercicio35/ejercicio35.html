@@ -31,12 +31,12 @@
       document.addEventListener("DOMContentLoaded", () => {
         const productsContainer = document.getElementById("products-container");
 
-        // Hacer 9 peticiones a la API para obtener imágenes de café aleatorias
+        // aqui hacemos 9 peticiones a la API para obtener imagenes de café aleatorias pero las imagenes no me sale
         for (let i = 0; i < 9; i++) {
           fetch("HTTPS://api.allorigins.win/get?url=https://coffee.alexflipnote.dev/random")
             .then((response) => response.json())
             .then((data) => {
-              // Crear elemento de producto y establecer la imagen de café
+              // Creamos elemento de producto y establecemos la imagen de café
               const product = document.createElement("div");
               product.classList.add("product");
               product.innerHTML = `
@@ -46,7 +46,7 @@
               <p>Precio: $${(Math.random() * 10).toFixed(2)}</p>
             `;
 
-              // Agregar producto al contenedor
+              //Agregamos  producto al contenedor
               productsContainer.appendChild(product);
             })
             .catch((error) => console.error("Error fetching coffee image:", error));

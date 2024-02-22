@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vehicle Information</title>
+    <script>
+      // Función para guardar la información del vehículo en localStorage
+      function guardarInformacion() {
+        // Crear un objeto JSON con la información del vehículo
+        var vehiculo = {
+          marca: "Toyota",
+          modelo: "Corolla",
+          numero_bastidor: "ABC123456789",
+          cilindrada: "2000cc",
+          num_puertas: 4,
+          color: "rojo",
+          propietario: {
+            nombre: "Juan",
+            apellidos: "Pérez",
+            direccion: "Calle Principal 123",
+            telefono: "123456789",
+            email: "juan@example.com",
+          },
+        };
+
+        // Convertir el objeto JSON a cadena de texto
+        var vehiculoJSON = JSON.stringify(vehiculo);
+
+        // Guardar la cadena de texto en localStorage
+        localStorage.setItem("vehiculo", vehiculoJSON);
+      }
+
+      // Función para leer y mostrar la información del vehículo guardada en localStorage
+      function mostrarInformacion() {
+        // Leer la cadena de texto del vehículo desde localStorage
+        var vehiculoJSON = localStorage.getItem("vehiculo");
+
+        // Convertir la cadena de texto a un objeto JSON
+        var vehiculo = JSON.parse(vehiculoJSON);
+
+        // Crear un HTML con la información del vehículo
+        var html =
+          "<h2>Información del Vehículo</h2>" +
+          "<p>Marca: " +
+          vehiculo.marca +
+          "</p>" +
+          "<p>Modelo: " +
+          vehiculo.modelo +
+          "</p>" +
+          "<p>Número de Bastidor: " +
+          vehiculo.numero_bastidor +
+          "</p>" +
+          "<p>Cilindrada: " +
+          vehiculo.cilindrada +
+          "</p>" +
+          "<p>Número de Puertas: " +
+          vehiculo.num_puertas +
+          "</p>" +
+          "<p>Color: " +
+          vehiculo.color +
+          "</p>" +
+          "<h2>Información del Propietario</h2>" +
+          "<p>Nombre: " +
+          vehiculo.propietario.nombre +
+          "</p>" +
+          "<p>Apellidos: " +
+          vehiculo.propietario.apellidos +
+          "</p>" +
+          "<p>Dirección: " +
+          vehiculo.propietario.direccion +
+          "</p>" +
+          "<p>Teléfono: " +
+          vehiculo.propietario.telefono +
+          "</p>" +
+          "<p>Email: " +
+          vehiculo.propietario.email +
+          "</p>";
+
+        // Mostrar el HTML en la página
+        document.getElementById("info").innerHTML = html;
+      }
+
+      // Función para limpiar la información del vehículo de localStorage al cerrar el navegador
+      window.onbeforeunload = function () {
+        localStorage.removeItem("vehiculo");
+      };
+    </script>
+  </head>
+  <body>
+    <button onclick="guardarInformacion()">Guardar Información del Vehículo</button>
+    <button onclick="mostrarInformacion()">Mostrar Información del Vehículo</button>
+    <div id="info"></div>
+  </body>
+</html>

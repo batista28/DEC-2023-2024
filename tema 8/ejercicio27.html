@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File System API Example</title>
+    <script>
+      window.onload = function () {
+        // Verificar si el navegador es compatible con la API FileSystem
+        if (!("showOpenFilePicker" in window)) {
+          alert("El navegador no es compatible con la API FileSystem.");
+          return;
+        }
+
+        // Función para crear un archivo de texto
+        async function createTextFile() {
+          try {
+            // Obtener el sistema de archivos
+            const sistemaArchivos = await window.showDirectoryPicker();
+
+            // Crear un nuevo archivo
+            const archivo = await sistemaArchivos.getFileHandle("miarchivo.txt", { create: true });
+
+            // Escribir contenido en el archivo
+            const contenido = "Este es el contenido del archivo.";
+            await archivo.createWritable().write(contenido);
+
+            alert("Archivo creado exitosamente.");
+          } catch (error) {
+            console.error("Error al crear el archivo:", error);
+            alert("Error al crear el archivo.");
+          }
+        }
+
+        // Llamar a la función para crear el archivo al hacer clic en un botón
+        document.getElementById("crearArchivoBtn").addEventListener("click", createTextFile);
+      };
+    </script>
+  </head>
+  <body>
+    <h1>API FileSystem - Ejemplo de Creación de Archivo</h1>
+    <button id="crearArchivoBtn">Crear Archivo de Texto</button>
+  </body>
+</html>
