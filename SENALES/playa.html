@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Señal con Borde Amarillo y Triángulo Negro</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="200" height="200"></canvas>
+    <script>
+      // Obtener el canvas y su contexto
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+
+      // Dibujar el triángulo amarillo con borde negro
+      ctx.beginPath();
+      ctx.moveTo(100, 20);
+      ctx.lineTo(20, 180);
+      ctx.lineTo(180, 180);
+      ctx.closePath();
+      ctx.fillStyle = "yellow";
+      ctx.fill();
+      ctx.lineWidth = 5; // Ancho del borde
+      ctx.strokeStyle = "black"; // Color del borde
+      ctx.stroke();
+    </script>
+  </body>
+</html>
