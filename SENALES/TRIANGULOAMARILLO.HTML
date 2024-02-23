@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Señal de Tráfico</title>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="200" height="200"></canvas>
+    <script>
+      // Obtener el canvas y su contexto
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+
+      // Dibujar el triángulo amarillo
+      ctx.beginPath();
+      ctx.moveTo(100, 20);
+      ctx.lineTo(20, 180);
+      ctx.lineTo(180, 180);
+      ctx.closePath();
+      ctx.fillStyle = "yellow";
+      ctx.fill();
+
+      // Dibujar la flecha blanca
+      ctx.beginPath();
+      ctx.moveTo(100, 50);
+      ctx.lineTo(70, 120);
+      ctx.lineTo(130, 120);
+      ctx.closePath();
+      ctx.fillStyle = "white";
+      ctx.fill();
+
+      // Línea central de la flecha
+      ctx.beginPath();
+      ctx.moveTo(100, 50);
+      ctx.lineTo(100, 150);
+      ctx.lineWidth = 5;
+      ctx.strokeStyle = "white";
+      ctx.stroke();
+    </script>
+  </body>
+</html>

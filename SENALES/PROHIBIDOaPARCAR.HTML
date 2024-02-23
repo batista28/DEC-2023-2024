@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Señal de Prohibido Aparcar</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="200" height="200"></canvas>
+    <script>
+      // Obtener el canvas y su contexto
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+
+      // Dibujar el círculo rojo
+      ctx.beginPath();
+      ctx.arc(100, 100, 80, 0, Math.PI * 2);
+      ctx.fillStyle = "red";
+      ctx.fill();
+
+      // Dibujar la línea diagonal
+      ctx.beginPath();
+      ctx.moveTo(30, 30);
+      ctx.lineTo(170, 170);
+      ctx.strokeStyle = "white";
+      ctx.lineWidth = 20;
+      ctx.stroke();
+
+      // Escribir "NO" en blanco
+      ctx.font = "bold 60px Arial";
+      ctx.fillStyle = "white";
+      ctx.textAlign = "center";
+      ctx.fillText("NO", 100, 100);
+    </script>
+  </body>
+</html>
